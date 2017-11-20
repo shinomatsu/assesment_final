@@ -1,17 +1,56 @@
-<%= form_with(model: hotel, local: true) do |form| %>
-  <% if hotel.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
 
-      <ul>
-      <% hotel.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @hotel do |form| %>
+<!-- title_form -->
+<div class="text-field">
+  <%= form.label :name %>
+  <%= form.text_field :name, type: 'name' %>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<!-- country -->
+<div class="text-field">
+  <%= form.label :country %>
+  <%= form.text_field :country, type: 'country' %>
+</div>
+
+<!-- roomtype_form -->
+<div class="text-field">
+  <%= form.label :state %>
+  <%= form.text_field :state, type: 'state' %>
+</div>
+
+<!-- roomtype_form -->
+<div class="text-field">
+  <%= form.label :city %>
+  <%= form.text_field :city, type: 'city' %>
+</div>
+
+<!-- num_of_room_form -->
+<div class="text-field">
+  <%= form.label :num_of_rooms %>
+  <%= form.text_field :num_of_rooms, type: 'num_of_rooms' %>
+</div>
+
+<!-- num_of_guest_form -->
+<div class="text-field">
+  <%= form.label :num_of_guest %>
+  <%= form.text_field :guest_number, type: 'guest_number' %>
+</div>
+
+<!-- description -->
+<div class="text-field">
+  <%= form.label :description %>
+  <%= form.text_field :description, type: 'description' %>
+</div>
+
+
+<!-- photos-->
+<div class="photos">
+  <%= form.label :photos %>
+  <%= form.file_field :photos, multiple: true %>
+</div>
+
+<div class="submit-field">
+  <%= form.submit %>
+</div>
+  
 <% end %>

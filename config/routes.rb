@@ -20,8 +20,11 @@ Rails.application.routes.draw do
 
  #sign_up/in/out
 
- resources :hotels
- resources :reviews
+ resources :reviews, only: [:show, :edit, :update, :destroy]
+
+ resources :hotels do
+   resources :reviews,only:[:new, :create]
+ end
 
 
 end

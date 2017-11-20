@@ -1,6 +1,7 @@
 class HotelsController < ApplicationController
   before_action :set_hotel, only: [:show, :edit, :update, :destroy]
 
+
   # GET /hotels
   # GET /hotels.json
   def index
@@ -69,6 +70,6 @@ class HotelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hotel_params
-      params.fetch(:hotel, {})
+      params.require(:hotel).permit(:name, :country, :state, :city, :num_of_rooms, :guest_number,:description,photos:[])
     end
 end

@@ -1,4 +1,47 @@
 <p id="notice"><%= notice %></p>
 
+<div class="hotel_information">
+
+    <p>
+    <strong>name:</strong>
+    <%= @hotel.name %>
+    </p>
+
+    <p>
+    <strong>Country:</strong>
+    <%= @hotel.country %>
+    </p>
+
+    <p>
+    <strong>City:</strong>
+    <%= @hotel.city %>
+    </p>
+
+    
+    <p>
+    <strong>Num of rooms:</strong>
+    <%= @hotel.num_of_rooms %>
+    </p>
+
+    <p>
+    <strong>Num of guest:</strong>
+    <%= @hotel.guest_number %>
+    </p>
+
+    <p>
+    <strong>Description:</strong>
+    <%= @hotel.description %>
+    </p>
+
+
+
+ <%= link_to 'Post review', new_hotel_review_path(@hotel) %>
+
+
+
+<% if logged_in? %>
+<% if current_user.role == "superadmin" %>
 <%= link_to 'Edit', edit_hotel_path(@hotel) %> |
 <%= link_to 'Back', hotels_path %>
+<% end %>
+<% end %>

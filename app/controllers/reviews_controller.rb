@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
+    @hotel = Hotel.find(params[:hotel_id])
     @review = Review.new
   end
 
@@ -24,12 +25,15 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
+    # byebug
+    @hotel = Hotel.find(params[:hotel_id])
+    @review = current_user.reviews.new(review_params)
+    @review.hotel_id = @hotel.id
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
+        format.html { redirect_to @hotel, notice: 'Review was successfully created.' }
+        format.json { render :show, status: :created, location: @hotel }
       else
         format.html { render :new }
         format.json { render json: @review.errors, status: :unprocessable_entity }
@@ -69,6 +73,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.fetch(:review, {})
+      params.require(:review).permit(:review_description,:user_id,:hotel_id)
     end
 end

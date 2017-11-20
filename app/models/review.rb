@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
-	belongs_to :hotels
-	belongs_to :users
+	# belongs_to :hotels
+	# belongs_to :users
 
 
 	validates :review_description, presence:true
