@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# google map
+gem "gmaps4rails"
+gem "geocoder"
+
 # easy way to keep your users' passwords secure.
 gem 'bcrypt', '~> 3.1.7'
 
