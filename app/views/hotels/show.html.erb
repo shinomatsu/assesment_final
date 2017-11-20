@@ -1,5 +1,9 @@
+<div class="container">
+<!-- display notice-->
 <p id="notice"><%= notice %></p>
+<!-- display notice-->
 
+<!-- display hotel information-->
 <div class="hotel_information">
 
     <p>
@@ -33,15 +37,34 @@
     <%= @hotel.description %>
     </p>
 
+</div>
+<!-- display hotel information-->
+    
+<!-- display review -->
+<p>-----------------------------------</p>
+<section class="posted_review">
+<p><strong>Review</strong></p>
+      <% @hotel_reviews = Review.where(" hotel_id = ?",params[:id])%>
+      <% @hotel_reviews.each do |review| %>
+        <p><%= review.updated_at %></p>
+        <p><%= review.review_description %></p>
+        <p>User name: <%= review.user.first_name  %></p>
+      <% end %>
+        
+</section>
+<!-- display review -->
 
-
- <%= link_to 'Post review', new_hotel_review_path(@hotel) %>
-
-
-
+<!-- display edit/delete or post review -->
 <% if logged_in? %>
 <% if current_user.role == "superadmin" %>
 <%= link_to 'Edit', edit_hotel_path(@hotel) %> |
+<%= link_to 'Destroy', @hotel, method: :delete, data: { confirm: 'Are you sure?' } %>|
+
+<% else %>
+<%= link_to 'Post review', new_hotel_review_path(@hotel) %> 
+<% end %>
+<% end %>
 <%= link_to 'Back', hotels_path %>
-<% end %>
-<% end %>
+<!-- display edit/delete or post review -->
+</div>
+

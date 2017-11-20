@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+ body { 
+ 	padding-top: 30px; 
+ }
+.container{
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+ .submit-field {
+ 	padding-top: 15px;
+ 	padding-bottom: 15px;
+ }
+
+ .search{
+    padding: 20px;
+}

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 	  user = User.find_by(email: params[:session][:email])
 	  if user && user.authenticate(params[:session][:password])
 	    session[:user_id] = user.id
-	    redirect_to users_path
+	    redirect_to hotels_path
 	  else
 	  	flash[:warning] = "Invalid Username or password"
 	    render :new
