@@ -12,7 +12,7 @@
 <!--  render 'search_form' -->
   <div class="search">
     <%= form_tag(hotels_path, class: 'form-inline', :method => "get") do %>
-      <%= text_field_tag :country, params[:country], placeholder: "Anywhere", class:'form-control col-lg-6'%>
+      <%= text_field_tag :country, params[:country], placeholder: "Anywhere country", class:'form-control col-lg-6'%>
       <%= submit_tag "Search", class:'btn btn-secondary', style:'display: inline;'%>
     <% end %>
   </div>
