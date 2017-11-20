@@ -8,6 +8,9 @@ end
 # easy way to keep your users' passwords secure.
 gem 'bcrypt', '~> 3.1.7'
 
+#Figaro was written to make it easy to securely configure Rails applications.
+gem "figaro"
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
