@@ -1,0 +1,17 @@
+
+<div class="actions">
+
+<%= form_for [@review],url:hotel_reviews_path, html:{method:'POST'} do |form| %>
+
+<!-- review_form -->
+<div class="text-field">
+  <%= form.label :review %>
+  <%= form.text_field :review_description, type: 'review_description' %>
+</div>
+
+<div class="submit-field">
+  <%= form.submit %>
+</div>
+  
+<% end %>
+</div>

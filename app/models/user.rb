@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :email, presence: true
   has_many :authentications
+  has_many :reviews
 
  #Declare an enum attribute where the values map to integers in the database
  enum role: [:superadmin, :only_user]

@@ -21,18 +21,61 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true%>
   </head>
 
-	 <% if logged_in?  %>
-	  <div>
-	    <%= current_user.first_name %> | <%= link_to "sig out", sign_out_path, method: :delete, data: { confirm: "sign out" } %>
-	  </div>
-	<% else %>
-	  <div>
-	    <%= link_to "sign up", sign_up_path %> | <%= link_to "login", sign_in_path %>
-	  </div>
-    <div><%= link_to 'Twitter with sign_in', '/auth/twitter' %></div>
-	<% end  %>
+<body>
+<!-- navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-nav">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">TTTAdvisor</a>
+            </div>
 
-  <body>
-    <%= yield %>
-  </body>
+              <ul class="nav navbar-nav">
+                   <li><%= link_to "Hotels", hotels_path %></li>
+              </ul>
+
+ <ul class="nav navbar-nav navbar-right">
+
+<!-- if login -->
+<% if logged_in?  %> 
+
+        <!-- if you are superadmin, display post hotel's information-->
+        <% if current_user.role == "superadmin" %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">management<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'New Hotel', new_hotel_path %></li>
+                </ul>
+              </li>
+          <% end %>
+             <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name %><%= current_user.last_name %><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'My page', user_path(current_user) %></li>
+                  <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
+                </ul>
+             </li>
+
+
+<!-- if not login -->
+   <% else %>  
+             <li class="dropdown">
+               <a href="/sign_in" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign up / Sign in<span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                 <li><%= link_to 'Sign in', sign_in_path %></li>
+                 <li><%= link_to "Sign in with twitter", "/auth/twitter" %></li>
+                 <li role="separator" class="divider"></li>
+                <li><%= link_to "Sign up", sign_up_path %></li>
+               </ul>
+   <% end %>
+
+</nav>
+<!-- naver -->
+ </body>
+     <%= yield %>
 </html>
