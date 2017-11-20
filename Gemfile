@@ -11,6 +11,11 @@ gem 'bcrypt', '~> 3.1.7'
 #Figaro was written to make it easy to securely configure Rails applications.
 gem "figaro"
 
+#login with twitter
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
