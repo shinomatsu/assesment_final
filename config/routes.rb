@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'users#new'
   
-
+ #sign_up/in/out
   resource :session, controller: "sessions", only: [:new, :create, :destroy ]
 
   get "/sign_in" => "sessions#new", as: "sign_in"
@@ -11,5 +11,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :index, :update ,:show, :edit]
   get "/sign_up"=> "users#new", as: "sign_up"
+
+
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+  
 
 end
