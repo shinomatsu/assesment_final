@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+  get "/search" => "hotels#search"
   
   root 'hotels#index'
   
