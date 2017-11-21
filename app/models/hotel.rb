@@ -1,17 +1,15 @@
 class Hotel < ApplicationRecord
 	has_many :reviews
+	validates :address, presence: true
+
+	geocoded_by :address
+    after_validation :geocode
+
+	
 
 
-scope :search_with_country, -> (country){ where("country like ?", "%#{country}%")}
+ scope :search_with_country, -> (country){ where("country like ?", "%#{country}%")}
 
-
-
-# def self.search(country)  
-#     if search
-#       Project.where(['country LIKE ?', "%#{country}%"])
-#     else
-#       Project.all 
-#     end
 end
 
 

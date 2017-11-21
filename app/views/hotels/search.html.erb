@@ -1,0 +1,9 @@
+
+<% @hotels.each do |hotel| %>
+	<tr>
+		<td><%= hotel.name%></td>
+		<td><%= hotel.country%></td>
+		<td><%= hotel.city%></td>
+		<td><%= link_to 'Show', hotel %></td>
+	</tr>
+<% end %>

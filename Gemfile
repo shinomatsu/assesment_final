@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 # google map
-gem "gmaps4rails"
 gem "geocoder"
 
 # easy way to keep your users' passwords secure.

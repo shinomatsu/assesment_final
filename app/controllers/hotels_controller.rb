@@ -1,13 +1,17 @@
 class HotelsController < ApplicationController
   before_action :set_hotel, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @hotels = Hotel.search_with_country(params[:query])
+    render :layout => false
+  end
 
   # GET /hotels
   # GET /hotels.json
   def index
     
     #search
-    @hotels = Hotel.search_with_country(params[:country])
+    @hotels = Hotel.all
 
     # @hotels = Hotel.all
 
@@ -16,6 +20,9 @@ class HotelsController < ApplicationController
   # GET /hotels/1
   # GET /hotels/1.json
   def show
+    @longitude = @hotel.longitude
+    @latitude = @hotel.latitude
+    @address = @hotel.address
   end
 
   # GET /hotels/new
@@ -75,6 +82,6 @@ class HotelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hotel_params
-      params.require(:hotel).permit(:name, :country, :state, :city, :num_of_rooms, :guest_number,:description,photos:[])
+      params.require(:hotel).permit(:name, :country, :state, :city, :num_of_rooms, :guest_number,:description,:address,:latitude,:longitude,photos:[])
     end
 end
