@@ -3,6 +3,11 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   # GET /reviews.json
+
+  def about
+    
+  end
+  
   def index
     @reviews = Review.all
   end
